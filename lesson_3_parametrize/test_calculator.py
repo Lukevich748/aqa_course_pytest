@@ -14,7 +14,8 @@ class TestCalculator:
         ]
     )
     def test_sum(self, a, b, expected):
-        assert calc.addition(a, b) == expected
+        result = calc.addition(a, b)
+        assert result == expected, f"Expected {expected}, but got {result}."
 
     @pytest.mark.parametrize(
         "a, b, expected", [
@@ -24,7 +25,8 @@ class TestCalculator:
         ]
     )
     def test_subtraction(self, a, b, expected):
-        assert calc.subtraction(a, b) == expected
+        result = calc.subtraction(a, b)
+        assert result == expected, f"Expected {expected}, but got {result}."
 
     @pytest.mark.parametrize(
         "a, b, expected", [
@@ -34,7 +36,8 @@ class TestCalculator:
         ]
     )
     def test_division(self, a, b, expected):
-        assert calc.division(a, b) == expected
+        result = calc.division(a, b)
+        assert result == expected, f"Expected {expected}, but got {result}."
 
     @pytest.mark.parametrize(
         "a, b, expected", [
@@ -44,4 +47,5 @@ class TestCalculator:
         ]
     )
     def test_multiplication(self, a, b, expected):
-        assert calc.multiplication(a, b) == expected
+        result = calc.multiplication(a, b)
+        assert result == expected, f"Expected {expected}, but got {result}."

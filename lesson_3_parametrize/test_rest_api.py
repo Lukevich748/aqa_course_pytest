@@ -16,7 +16,7 @@ class TestAPI:
         response = requests.get(
             url=f"{self.BASE_URL}{endpoint}"
         )
-        assert response.status_code == status_code
+        assert response.status_code == status_code, f"Expected status code {status_code}, but got {response.status_code}."
 
     @pytest.mark.parametrize(
         "payload, status_code", [
@@ -29,7 +29,7 @@ class TestAPI:
             url=f"{self.BASE_URL}/posts",
             json=payload
         )
-        assert response.status_code == status_code
+        assert response.status_code == status_code, f"Expected status code {status_code}, but got {response.status_code}."
 
     @pytest.mark.parametrize(
         "post_id, payload, status_code", [
@@ -43,4 +43,17 @@ class TestAPI:
             url=f"{self.BASE_URL}/posts/{post_id}",
             json=payload
         )
-        assert response.status_code == status_code
+        assert response.status_code == status_code, f"Expected status code {status_code}, but got {response.status_code}."
+
+    @pytest.mark.parametrize(
+        "post_id, status_code", [
+            (1, 200),
+            (65, 200),
+            ("", 404)
+        ]
+    )
+    def test_delete_requests(self, post_id, status_code):
+        response = requests.delete(
+            url=f"{self.BASE_URL}/posts/{post_id}"
+        )
+        assert response.status_code == status_code, f"Expected status code {status_code}, but got {response.status_code}."

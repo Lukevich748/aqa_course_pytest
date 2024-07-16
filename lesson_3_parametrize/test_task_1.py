@@ -14,4 +14,4 @@ class TestSum:
     )
     def test_sum_numbers(self, a, b, expected):
         result = a + b
-        assert result == expected
+        assert result == expected, f"Expected {expected}, but got {result}."

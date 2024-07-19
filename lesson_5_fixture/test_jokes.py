@@ -53,7 +53,7 @@ class TestJokes:
         post_button = self.wait.until(EC.element_to_be_clickable(self.POST_BUTTON_LOCATOR))
         post_button.click()
         self.wait.until(EC.visibility_of_element_located(self.SUCCESS_ALERT_LOCATOR))
-        self.wait.until(EC.visibility_of_element_located(self.POST_CARD_LOCATOR))
+        self.wait.until(EC.invisibility_of_element_located(self.SUCCESS_ALERT_LOCATOR))
 
         created_post_text = self.driver.find_element(*self.post_text_locator(post_text))
         assert post_text == created_post_text.text
